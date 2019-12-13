@@ -16,4 +16,9 @@
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TempoTS.DAL\TempoTS.DAL.csproj" />
+    <ProjectReference Include="..\TempoTS.Models\TempoTS.Models.csproj" />
+  </ItemGroup>
+
 </Project>

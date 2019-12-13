@@ -18,4 +18,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TempoTS.Models\TempoTS.Models.csproj" />
+  </ItemGroup>
+
 </Project>
