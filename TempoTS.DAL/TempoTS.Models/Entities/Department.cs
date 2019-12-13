@@ -10,7 +10,7 @@ namespace TempoTS.Models.Entities
     {
         public string Name { get; set; }
 
-        //[ForeignKey(nameof(User))]
-        //public User ManagerID { get; set; }
+        [ForeignKey(nameof(User))]
+        public User ManagerID { get; set; }
     }
 }
