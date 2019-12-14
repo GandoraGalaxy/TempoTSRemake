@@ -27,5 +27,10 @@ namespace TempoTS.DAL.EF
                     @"Server=(localdb)\mssqllocaldb;Database=TempoTSRemodel;Trusted_Connection=True;MultipleActiveResultSets=true;");
             }
         }
+
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<Payroll> Payrolls { get; set; }
+        public virtual DbSet<TimeClock> TimeClocks { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }
