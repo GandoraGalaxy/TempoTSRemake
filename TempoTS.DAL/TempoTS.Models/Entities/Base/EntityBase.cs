@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace TempoTS.Models.Entities
+namespace TempoTS.Models.Entities.Base
 {
     public abstract class EntityBase
     {

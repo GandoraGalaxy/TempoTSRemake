@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using TempoTS.Models.Entities.Base;
 
 namespace TempoTS.Models.Entities
 {
