@@ -13,7 +13,7 @@ namespace TempoTS.DAL.Initilizers
 {
     public class TSSampleData
     {
-        public static IEnumerable<Department> GetDivisions() => new List<Department>
+        public static IEnumerable<Department> GetDepartment() => new List<Department>
         {
             new Department {Name = "Floor Walker"},
             new Department {Name = "Retail"},
@@ -37,6 +37,13 @@ namespace TempoTS.DAL.Initilizers
             new Payroll {Salary = 75.0M},
             new Payroll {Salary = 150.0M},
             new Payroll {Salary = 250.0M},
+        };
+
+        public static IEnumerable<User> GetUsers() => new List<User>
+        {
+            new User {FirstName = "H", LastName = "R", Email = "hr@develop.com", UserName = "hr@develop.com"},
+            new User {FirstName = "MR", LastName = "Manager", Email = "manager@develop.com", UserName = "manager@develop.com"},
+            new User {FirstName = "Employee", LastName = "Worker", Email = "employee@develop.com", UserName = "employee@develop.com"},
         };
     }
 }

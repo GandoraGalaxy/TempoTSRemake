@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using TempoTS.DAL.EF;
 using TempoTS.Models.Entities;
+using TempoTS.Models.Entities.Base;
 
 namespace TempoTS.DAL.Repos.Base
 {

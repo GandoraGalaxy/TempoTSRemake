@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using TempoTS.Models.Entities;
+using TempoTS.Models.Entities.Base;
 
 namespace TempoTS.DAL.Repos.Base
 {
