@@ -4,12 +4,18 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TempoTS.DAL.EF;
+using TempoTS.DAL.Initilizers;
+using TempoTS.Models.Entities;
 
 namespace TempoTS.Service
 {
@@ -33,6 +39,24 @@ namespace TempoTS.Service
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<CookiePolicyOptions>(options =>
+            {
+                options.CheckConsentNeeded = context => true;
+                options.MinimumSameSitePolicy = SameSiteMode.None;
+            });
+
+            services.AddDbContext<TSContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("TempoTS")));
+
+            services.AddScoped<User>();
+
+            services.AddIdentity<User, IdentityRole>(
+               options => options.Stores.MaxLengthForKeys = 128)
+               .AddEntityFrameworkStores<TSContext>()
+               .AddDefaultUI()
+               .AddRoles<IdentityRole>()
+               .AddDefaultTokenProviders();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
@@ -48,6 +72,18 @@ namespace TempoTS.Service
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
+            if (env.IsDevelopment())
+            {
+                using (var serviceScope = app.ApplicationServices.CreateScope())
+                {
+                    var context = serviceScope.ServiceProvider.GetService<TSContext>();
+                    //TSSampleData.InitializeData(app.ApplicationServices)
+                    //TimeSheetSampleData.Initialize(context, userManager, roleManager).Wait();
+                }
+            }
+
+            app.UseCors("AllowAll");
 
             app.UseHttpsRedirection();
             app.UseMvc();
