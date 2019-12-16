@@ -10,6 +10,8 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="TempoTS.DAL" Version="1.0.0" />
+    <PackageReference Include="TempoTS.Models" Version="1.0.0" />
   </ItemGroup>
 
 </Project>
